@@ -47,12 +47,12 @@ export default function Testimonials() {
   const [direction, setDirection] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const nextTestimonial = () => {
+  const nextTestimonial = React.useCallback(() => {
     setDirection(1);
     setCurrentIndex((prevIndex) =>
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [testimonials.length]);
 
   const prevTestimonial = () => {
     setDirection(-1);
